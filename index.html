@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="https://d3js.org/topojson.v2.min.js"></script>
   <style>
   body {
       font: 400 15px Lato, sans-serif;
@@ -234,14 +236,15 @@
 <!-- Container (topic1) -->
 <div id="topic1" class="container-fluid bg-grey">
   <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    <div class="col-sm-6">
+      <p id="report"></p>
+      <div id="map"></div>
+      <script type = "text/javascript" src="./data/choroplethInternet.js"></script>
     </div>
-    <div class="col-sm-8">
-      <h2>Tópico 1</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="col-sm-6">
+      <h2>Tópico 1 - Choropleth</h2><br>
+      <h4>Velocidade de conexão de Internet por país, em kbps</h4><br>
+      <p>Dados obtidos em <a href="http://akamai.com">Akamai</a> e <a href="https://www.worlddata.info/downloads/">WorldData</a>. GeoJSON global obtido em <a href="https://github.com/johan/world.geo.json/blob/master/countries.geo.json?short_path=afdfc39">github.com/johan/world/geo/json</a>.</p>
     </div>
   </div>
 </div>
