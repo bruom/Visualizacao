@@ -8,8 +8,8 @@ path {
 }
 </style>
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/topojson.v0.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
 <script>
 var width = 960,
     height = 500;
@@ -18,9 +18,9 @@ var minimum = 5, maximum = 24;
 
 var minimumColor = "#BFD3E6", maximumColor = "#88419D";
 
-var color = d3.scale.linear().domain([minimum, maximum]).range([minimumColor, maximumColor]);
+var color = d3.scaleLinear().domain([minimum, maximum]).range([minimumColor, maximumColor]);
 
-var projection = d3.geo.mercator()
+var projection = d3.geoMercator()
     .center([0, 5 ])
     .scale(150)
     .rotate([-180,0]);
@@ -29,7 +29,7 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-var path = d3.geo.path()
+var path = d3.geoPath()
     .projection(projection);
 
 var g = svg.append("g");
@@ -37,8 +37,8 @@ var g = svg.append("g");
 // load and display the World
 d3.json("https://d3js.org/world-110m.v1.json", function(error, topology) {
     g.selectAll("path")
-      .data(topojson.object(topology, topology.objects.countries)
-          .geometries)
+      .data(topojson.feature(topology, topology.objects.countries)
+          .features)
     .enter()
       .append("path")
       .attr("d", path)
@@ -47,16 +47,7 @@ d3.json("https://d3js.org/world-110m.v1.json", function(error, topology) {
       });
 });
 
-// zoom and pan
-var zoom = d3.behavior.zoom()
-    .on("zoom",function() {
-        g.attr("transform","translate("+ 
-            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
-        g.selectAll("path")  
-            .attr("d", path.projection(projection)); 
-  });
 
-svg.call(zoom)
 
 </script>
 </body>
