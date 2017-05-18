@@ -5,7 +5,7 @@ var svgTrend = d3.select("#trends"),
     g = svgTrend.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")").attr("id","trendG");
 
 var games = ["LoL", "DotA", "CS:GO"];
-var colors = [,"goldenrod", "red","steelblue"];
+var colors = ["goldenrod", "red","steelblue"];
 
 for(i=0; i<3; i++){
   svgTrend.append("circle")
