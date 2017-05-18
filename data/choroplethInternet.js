@@ -1,3 +1,5 @@
+//Com um agradecimento a Darren Jaworski pelo tutorial em http://bl.ocks.org/darrenjaworski/5874214
+
 d3.select("#report").text("Aponte um país");
 
 var h = 450,
@@ -18,6 +20,7 @@ var path = d3.geoPath()
     .projection(projection);
 // set-up svg canvas
 var svg = d3.select("#map").append("svg")
+    .attr("id", "choropleth")
     .attr("height", h)
     .attr("width", w);
 //https://github.com/johan/world.geo.json
