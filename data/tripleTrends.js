@@ -40,7 +40,6 @@ var lineCsgo = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.csgo); });
 
-
 d3.csv("data/esportsGames.csv", function(d) {
   d.date = parseTime(d.date);
   d.dota = +d.dota;
