@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>Cartograms with d3 &amp; TopoJSON</title>
+    <meta charset="utf-8">
+    <meta property="og:image" content="placeholder.png">
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="data/colorbrewer.js"></script>
+    <script src="data/topojson.js"></script>
+    <script src="data/cartogram.js"></script>
+    <style type="text/css">
+
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.4em;
+        padding: 0;
+        margin: 0;
+      }
+
+      #container {
+        width: 800px;
+        margin: 20px auto;
+      }
+
+      h1 {
+        font-size: 200%;
+        margin: 0 0 15px 0;
+      }
+
+      h2 {
+        font-size: 160%;
+        margin: 0 0 10px 0;
+      }
+
+      p {
+        margin: 0 0 10px;
+      }
+
+      #map-container {
+        height: 500px;
+        text-align: center;
+        position: relative;
+        margin: 20px 0;
+      }
+
+      #map {
+        display: block;
+        position: absolute;
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      path.state {
+        stroke: #666;
+        stroke-width: .5;
+      }
+
+      path.state:hover {
+        stroke: #000;
+      }
+
+      select {
+        font-size: inherit;
+      }
+
+      #placeholder {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        left: 0;
+        top: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Velocidade de Internet por Região Brasileira</h1>
+      <div id="map-container">
+        <svg id="map"></svg>
+      </div>
+
+    </div>
+    <script>
+
+      var minimumColor = "#BFD3E6", maximumColor = "#88419D";
+
+      var body = d3.select("body");
+
+      var map = d3.select("#map"),
+          layer = map.append("g")
+            .attr("id", "layer"),
+          estados = layer.append("g")
+            .attr("id", "estados")
+            .selectAll("path");
+
+      var proj = d3.geo.mercator()
+            .scale(500)
+            .center([-30,-25]),
+          topology,
+          geometries,
+          rawData,
+          dataById = {},
+          carto = d3.cartogram()
+            .projection(proj)
+            .properties(function(d) {
+              return dataById[d.id];
+            })
+            .value(function(d) {
+              console.log(d.properties);
+              return +d.properties["INTERNET"];
+            });
+      window.onhashchange = function() {
+        parseHash();
+      };
+
+      d3.json("data/brazilTopo.json", function(topo) {
+        topology = topo;
+        geometries = topology.objects.estados.geometries;
+        d3.csv("data/brasilInternet.csv", function(data) {
+          rawData = data;
+          dataById = d3.nest()
+            .key(function(d) { return d.NAME; })
+            .rollup(function(d) { return d[0]; })
+            .map(data);
+          init();
+        });
+      });
+
+      function init() {
+        var features = carto.features(topology, geometries),
+            path = d3.geo.path()
+              .projection(proj);
+
+        estados = estados.data(features)
+          .enter()
+          .append("path")
+            .attr("class", "estado")
+            .attr("id", function(d) {
+              return d.properties.NAME;
+            })
+            .attr("fill", "#fafafa")
+            .attr("d", path);
+
+        estados.append("title");
+
+        parseHash();
+      }
+
+      function update() {
+        var //key = field.key.replace("%d", year), // csv collumn name
+            key = "INTERNET",
+            value = function(d) {
+              return +d.properties[key];
+            },
+            values = estados.data()
+              .map(value)
+              .filter(function(n) {
+                return !isNaN(n);
+              })
+              .sort(d3.ascending),
+            lo = values[0],
+            hi = values[values.length - 1];
+        var color = d3.scale.linear()
+          .range([minimumColor,maximumColor])
+          .domain(lo < 0
+            ? [lo, 0, hi]
+            : [lo, d3.mean(values), hi]);
+        // normalize the scale to positive numbers
+        var scale = d3.scale.linear()
+          .domain([lo, hi])
+          .range([1, 10]);
+
+        // tell the cartogram to use the scaled values
+        carto.value(function(d) {
+          return scale(value(d));
+        });
+
+        // generate the new features, pre-projected
+        var features = carto(topology, geometries).features;
+
+        // update the data
+        estados.data(features)
+          .select("title")
+            .text(function(d) {
+              return [d.properties.NAME, value(d)].join(": ");
+            });
+
+        estados.transition()
+          .duration(1)
+          .ease("linear")
+          .attr("fill", function(d) {
+            return color(value(d));
+          })
+          .attr("d", carto.path);
+      }
+
+      function parseHash(){
+        update.apply(null, arguments);}
+
+    </script>
+  </body>
+</html>
