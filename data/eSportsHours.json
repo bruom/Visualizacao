@@ -1,0 +1,33 @@
+{
+ "name": "Games",
+ "children": [
+  {
+   "name": "[A]RTS",
+   "color": "#c90c0c",
+   "children": [
+    {"name": "Dota 2", "size": 49, "percent": 0.66},
+    {"name": "League of Legends", "size": 82.3, "percent": 0.28},
+    {"name": "StarCraft II", "size": 3.9, "percent": 0.49},
+    {"name": "Smite", "size": 4.3, "percent": 0.41},
+    {"name": "HotS", "size": 5.8, "percent": 0.29}
+   ]
+  },
+  {
+   "name": "FPS",
+   "color": "#2209c1",
+   "children": [
+     {"name": "Counter Strike: Global Offensive", "size": 36.3, "percent": 0.56},
+     {"name": "Overwatch", "size": 21.1, "percent": 0.09}
+   ]
+  },
+  {
+   "name": "Other",
+   "color": "#09ba12",
+   "children": [
+     {"name": "Hearthstone", "size": 53.2, "percent": 0.15},
+     {"name": "Street Fighter V", "size": 2.5, "percent": 0.47},
+     {"name": "Rocket League", "size": 2.9, "percent": 0.36}
+   ]
+  }
+ ]
+}

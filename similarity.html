@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+
+    <meta charset="utf-8">
+    <title>Similaridade entre textos</title>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <svg width="960" height="500" id="similarity"></svg>
+    </div>
+    <script type="text/javascript">
+
+    function averageAngleInterval(num){
+      var resultingAngles = [0];
+      var interval = (6.283/num);
+      while(resultingAngles.length < num){
+        resultingAngles.push(resultingAngles[resultingAngles.length-1] + interval);
+      }
+
+      return resultingAngles;
+    }
+
+    var svgSimilarity = d3.select("#similarity");
+
+    var centreX = svgSimilarity.attr("width")/2,
+        centreY = svgSimilarity.attr("height")/2,
+        radius = 100;
+
+    var items = ["BTS","EULCS","iWD","LCK","PGL_Dota","Summit1G","TwitchPresents"];
+    var angles = averageAngleInterval(items.length);
+
+    var similarityMatrix = [];
+    for (var i = 0; i < items.length; i++) {
+      similarityMatrix.push(Array(items.length).fill(0));
+    }
+/*
+    var texts = Array(items.length);
+    for (var thisText = 0; thisText < items.length; i++) {
+      d3.text("data/twitchLogs/usernames/" + items[2] + ".txt", function(text) {
+        texts[i] = d3.csvParseRows(text
+        console.log(thisText);
+        texts[thisText] = "meme";
+      });
+    }
+    d3.text("data/twitchLogs/usernames/BTS.txt", function(text) {
+      var lines = d3.csvParseRows(text);
+      d3.text("data/twitchLogs/usernames/EULCS.txt", function(text2) {
+
+        var lines2 = d3.csvParseRows(text2);
+
+        for (var line1 in lines) {
+          for (var line2 in lines2) {
+            if(lines[line1][0] == lines2[line2][0]){
+              similarityMatrix[0][1]++;
+            }
+          }
+        }
+
+      });
+    });
+*/
+    svgSimilarity.append("g").selectAll("circle")
+      .data(items)
+      .enter()
+      .append("circle")
+      .attr("cx",function(d,i){
+        return centreX + (radius*Math.cos(angles[i]));
+      })
+      .attr("cy",function(d,i){
+        return centreY + (radius*Math.sin(angles[i]));
+      })
+      .attr("r", 10);
+
+    </script>
+  </body>
+</html>

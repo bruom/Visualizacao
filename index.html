@@ -143,6 +143,28 @@
       border-color: transparent;
       color: #fff !important;
   }
+  .node circle {
+    fill: #999;
+  }
+
+  .node text {
+    font: 10px sans-serif;
+  }
+
+  .node--internal circle {
+    fill: #555;
+  }
+
+  .node--internal text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  }
+
+  .link {
+    fill: none;
+    stroke: #f28029;
+    stroke-opacity: 0.9;
+    stroke-width: 1.5px;
+  }
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
@@ -155,6 +177,9 @@
       animation-duration: 1s;
       -webkit-animation-duration: 1s;
       visibility: visible;
+  }
+  #treemap {
+    font: 10px sans-serif;
   }
   @keyframes slide {
     0% {
@@ -211,6 +236,7 @@
         <li><a href="#topic1">Topico 1</a></li>
         <li><a href="#topic2">Topico 2</a></li>
         <li><a href="#topic3">Topico 3</a></li>
+        <li><a href="#topic4">Topico 4</a></li>
       </ul>
     </div>
   </div>
@@ -242,7 +268,7 @@
       <script type = "text/javascript" src="./data/choroplethInternet.js"></script>
     </div>
     <div class="col-sm-6">
-      <h2>Tópico 1 - Choropleth</h2><br>
+      <h2>Tópico 1 - Dados Espaciais</h2><br>
       <h4>Velocidade de conexão de Internet por país, em kbps</h4><br>
       <p>Dados obtidos em <a href="http://akamai.com">Akamai</a> e <a href="https://www.worlddata.info/downloads/">WorldData</a>. GeoJSON global obtido em <a href="https://github.com/johan/world.geo.json/blob/master/countries.geo.json?short_path=afdfc39">github.com/johan/world/geo/json</a>.</p>
     </div>
@@ -252,7 +278,7 @@
 <!-- Container (topic2) -->
 <div id="topic2" class="container-fluid text-center">
   <div class="col-sm-12">
-    <h2>Tópico 2</h2>
+    <h2>Tópico 2 - Dados Temporais</h2>
     <h4>Comparação entre trends - os maiores títulos de eSports</h4>
     <svg width="960" height="500" id="trends"></svg>
     <script type="text/javascript" src="./data/tripleTrends.js"></script>
@@ -268,10 +294,37 @@
 
 <!-- Container (topic3) -->
 <div id="topic3" class="container-fluid text-center">
-  <h2>Tópico 3</h2><br>
-  <h4>Chegaremos lá</h4>
-</div><br>
+  <h2>Tópico 3 - Dados Textuais</h2><br>
+  <h4>WordCloud</h4>
 
+</div>
+
+<!-- Container (topic3) -->
+<div id="topic4" class="container-fluid text-center bg-grey">
+  <h2>Tópico 4 - Dados Hierárquicos</h2><br>
+  <h4>Node-Link</h4>
+  <svg id="nodelink" width="760" height="500"></svg>
+  <script type="text/javascript" src="data/nodeTree.js"></script>
+</div>
+
+<div id="topic4b" class="container-fluid text-center">
+  <h4>TreeMap</h4>
+  <svg id="treemap" width="500" height="370"></svg>
+  <script type="text/javascript" src="data/treeMap.js"></script>
+</div>
+
+<div id="topic4c" class="container-fluid text-center bg-grey">
+  <h4>Sunburst</h4>
+  <div id="main">
+    <div id="sequence"></div>
+    <div id="chart">
+      <div id="explanation" style="visibility: hidden;">
+        <span id="percentage"></span><br/>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="data/sequencesSunburst.js"></script>
+</div>
 
 <footer class="container-fluid text-center bg-grey">
   <a href="#myPage" title="To Top">
