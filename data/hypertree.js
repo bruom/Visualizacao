@@ -33,11 +33,11 @@ function initHyperTree(){
       //color, width and dimensions.
       Node: {
           dim: 9,
-          color: "#f00"
+          color: "#5a90c9"
       },
       Edge: {
           lineWidth: 2,
-          color: "#088"
+          color: "#a5081a"
       },
       //Attach event handlers and add text to the
       //labels. This method is only triggered on label
@@ -58,13 +58,16 @@ function initHyperTree(){
           var style = domElement.style;
           style.display = '';
           style.cursor = 'pointer';
-          if (node._depth <= 1) {
+          if (node._depth == 0) {
+              style.fontSize = "1em";
+              style.fontWeight = 'bold';
+              style.color = "#0f0103";
+          } else if(node._depth == 1){
               style.fontSize = "0.8em";
-              style.color = "#ddd";
-
+              style.color = "#0f0103";
           } else if(node._depth == 2){
-              style.fontSize = "0.7em";
-              style.color = "#555";
+              style.fontSize = "0.65em";
+              style.color = "#adaca8";
 
           } else {
               style.display = 'none';
