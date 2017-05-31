@@ -1,0 +1,509 @@
+var genreData = `[{
+"id": "347_0",
+"name": "Video Game Genres",
+"children": [
+{
+  "id": "126510_1",
+  "name": "Action",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "52163_2",
+      "name": "Shooter",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "2352_3",
+          "name": "First Person Shooter",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": [
+            {
+              "id": "2352_4",
+              "name": "Arena Shooter",
+              "data": {
+                "color": "#000000",
+                "relation": "subgenre"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "2352_5",
+          "name": "Third Person Shooter",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "324134_6",
+      "name": "Platformer",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "2352_7",
+          "name": "Puzzle Platformer",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "2352_8",
+          "name": "Endless Runner",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "324134_9",
+      "name": "Fighting",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "2352_10",
+          "name": "Beat em Ups",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "2352_11",
+          "name": "Platform Figthers",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "324134_12",
+      "name": "Stealth",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "173871_13",
+  "name": "Action Adventure",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "324134_14",
+      "name": "Horror",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "324134_15",
+      "name": "Metroidvania",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "235952_16",
+  "name": "Adventure",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "324134_17",
+      "name": "Text Adventure",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "324134_18",
+      "name": "Graphic Adventure",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "324134_19",
+      "name": "3D Adventure",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "235951_20",
+  "name": "Role Playing",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "2382_21",
+      "name": "Action RPG",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "2382_22",
+      "name": "JRPG",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "2382_23",
+      "name": "CRPG",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "2415_24",
+      "name": "MMO RPG",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "3963_25",
+      "name": "Roguelikes",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "7848_26",
+      "name": "Tactical RPG",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "3963_27",
+          "name": "Turn-Based Tactical RPG",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "3963_28",
+          "name": "Party-Based Tactical RPG",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "235950_29",
+  "name": "Simulation",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "1007_30",
+      "name": "Construction/Management",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      }
+    },
+    {
+      "id": "1007_31",
+      "name": "Vehicle Simulation",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      }
+    },
+    {
+      "id": "327924_32",
+      "name": "Life Simulation",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "2396_33",
+  "name": "Strategy",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "32247_34",
+      "name": "Artillery",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "32247_35",
+      "name": "Wargames",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "32247_36",
+      "name": "Tower Defense",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "83761_37",
+      "name": "Real Time Strategy",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "32247_38",
+          "name": "Real Time Tactics",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "32247_39",
+          "name": "Action Real Time Strategy",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "133257_40",
+      "name": "Turn Based Strategy",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "3963_41",
+          "name": "4X",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "3963_41",
+          "name": "Turn Based Tactics",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "36352_42",
+  "name": "Sports",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "1013_43",
+      "name": "Racing",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": [
+        {
+          "id": "5752_44",
+          "name": "Racing Simulation",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        },
+        {
+          "id": "3963_45",
+          "name": "Arcade Racing",
+          "data": {
+            "color": "#000000",
+            "relation": "subgenre"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "33602_46",
+      "name": "Sports Fighting",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "236021_47",
+  "name": "Sandbox Games",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": []
+},
+{
+  "id": "236024_48",
+  "name": "Casual Games",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "909_49",
+      "name": "Idle Games",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    },
+    {
+      "id": "237377_50",
+      "name": "Party Games",
+      "data": {
+        "color": "#000000",
+        "relation": "is person"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "235953_51",
+  "name": "Digital Board Games",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": [
+    {
+      "id": "1440_52",
+      "name": "Digital Card Games",
+      "data": {
+        "color": "#000000",
+        "relation": "subgenre"
+      },
+      "children": []
+    }
+  ]
+},
+{
+  "id": "235955_53",
+  "name": "Music Games",
+  "data": {
+    "color": "#000000",
+    "relation": "subgenre"
+  },
+  "children": []
+}
+],
+"data": []
+}
+]`;
