@@ -87,7 +87,7 @@ function createVisualization(json) {
       .on("mouseover", mouseoverSunburst);
 
   // Add the mouseleave handler to the bounding circle.
-  d3.select("#container").on("mouseleave", mouseleave);
+  d3.select("#container").on("mouseleave", mouseleaveSunburst);
 
   // Get total size of the tree = value of root node from partition.
   totalSize = path.datum().value;
@@ -128,7 +128,7 @@ function mouseoverSunburst(d) {
 }
 
 // Restore everything to full opacity when moving off the visualization.
-function mouseleave(d) {
+function mouseleaveSunburst(d) {
 
   // Hide the breadcrumb trail
   d3.select("#trail")

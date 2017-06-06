@@ -32,6 +32,7 @@
     {"source": "EULCS", "target": "PGL_Dota", "value": 53},
     {"source": "EULCS", "target": "Summit1G", "value": 0},
     {"source": "EULCS", "target": "TwitchPresents", "value": 24},
+    {"source": "EULCS", "target": "AdmiralBulldog", "value": 0},
     {"source": "EULCS", "target": "WooxSolo", "value": 124},
     {"source": "EULCS", "target": "PlayHearthstone", "value": 14},
     {"source": "EULCS", "target": "imaqtpie", "value": 119},
