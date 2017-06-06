@@ -20,6 +20,7 @@ function initHyperTree(){
 
     var json = JSON.parse(genreData)[0];
     var infovis = document.getElementById('infovis');
+    d3.selectAll('#htPlaceHolder').remove();
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
 
     //init Hypertree

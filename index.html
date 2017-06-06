@@ -170,6 +170,15 @@
       margin-bottom: 20px;
       color: #f4511e;
   }
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+  }
+
+  .nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
   .slideanim {visibility:hidden;}
   .slide {
       animation-name: slide;
@@ -177,6 +186,13 @@
       animation-duration: 1s;
       -webkit-animation-duration: 1s;
       visibility: visible;
+  }
+  .group-tick line {
+    stroke: #000;
+  }
+
+  .ribbons {
+    fill-opacity: 0.67;
   }
   #treemap {
     font: 10px sans-serif;
@@ -237,6 +253,7 @@
         <li><a href="#topic2">Topico 2</a></li>
         <li><a href="#topic3">Topico 3</a></li>
         <li><a href="#topic4">Topico 4</a></li>
+        <li><a href="#topic5">Topico 5</a></li>
       </ul>
     </div>
   </div>
@@ -300,7 +317,7 @@
   <script type="text/javascript" src="./data/similarity.js"></script>
 </div>
 
-<!-- Container (topic3) -->
+<!-- Container (topic4) -->
 <div id="topic4" class="container-fluid text-center bg-grey">
   <h2>Tópico 4 - Dados Hierárquicos</h2><br>
   <h4>Node-Link</h4>
@@ -333,16 +350,28 @@
     <p>Árvore Hiperbólica representando uma visão simplificada dos gêneros de video games</p>
   </div>
   <div class="col-sm-8">
-    <div id="infovis"></div>
+    <div id="infovis">
+      <p id="htPlaceHolder" class="text-center" style="font-Style = 'oblique'">Carregando Hypertree...</p>
+    </div>
     <script type="text/javascript" src="data/jit-yc.js"></script>
     <script type="text/javascript" src="data/gameGenres.json"></script>
     <script type="text/javascript" src="data/hypertree.js"></script>
   </div>
 </div>
 
+<!-- Container (topic5) -->
 <div id="topic5" class="container-fluid text-center bg-grey">
   <h2>Tópico 5 - Visualização em Redes</h2>
-  <p>Soon</p>
+  <h4>Chord Diagram</h4>
+  <p id="chordLabel">Selecione a região</p>
+  <svg id="svgChord" width="500" height="500"></svg>
+  <script src="data/chord.js"></script>
+</div>
+
+<div id="topic5b" class="container-fluid text-center">
+  <h4>Force Graph</h4>
+  <svg id="svgForce" width="960" height="600"></svg>
+  <script src="data/forceGraph.js"></script>
 </div>
 
 <footer class="container-fluid text-center bg-grey">
