@@ -84,7 +84,7 @@ function createVisualization(json) {
       .attr("fill-rule", "evenodd")
       .style("fill", function(d) { return colors[d.data.name]; })
       .style("opacity", 1)
-      .on("mouseover", mouseover);
+      .on("mouseover", mouseoverSunburst);
 
   // Add the mouseleave handler to the bounding circle.
   d3.select("#container").on("mouseleave", mouseleave);
@@ -94,7 +94,7 @@ function createVisualization(json) {
  };
 
 // Fade all but the current sequence, and show it in the breadcrumb trail.
-function mouseover(d) {
+function mouseoverSunburst(d) {
 
   var percentage = (100 * d.value / totalSize).toPrecision(3);
   var percentageString = percentage + "%";
@@ -143,7 +143,7 @@ function mouseleave(d) {
       .duration(1000)
       .style("opacity", 1)
       .on("end", function() {
-              d3.select(this).on("mouseover", mouseover);
+              d3.select(this).on("mouseover", mouseoverSunburst);
             });
 
   d3.select("#explanation")

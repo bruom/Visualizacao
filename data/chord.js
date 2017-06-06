@@ -49,7 +49,7 @@ group.append("path")
     .style("fill", function(d) { return colorChord(d.index); })
     .style("stroke", function(d) { return d3.rgb(colorChord(d.index)).darker(); })
     .attr("d", arcChord)
-    .on("mouseover",mouseover);
+    .on("mouseover",mouseoverChord);
 
 var groupTick = group.selectAll(".group-tick")
   //.data(function(d) { return groupTicks(d, 1e3); })
@@ -80,7 +80,7 @@ gChord.append("g")
     .style("fill", function(d) { return colorChord(d.target.index); })
     .style("stroke", function(d) { return d3.rgb(colorChord(d.target.index)).darker(); });
 
-function mouseover(d, i) {
+function mouseoverChord(d, i) {
   chordLabel.text(regions[i]);
 }
 
