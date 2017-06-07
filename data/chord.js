@@ -40,12 +40,16 @@ var gChord = svgChord.append("g")
 
 var group = gChord.append("g")
     .attr("class", "groups")
+    .attr("id", "chordGroup")
   .selectAll("g")
   .data(function(chords) { return chords.groups; })
   .enter().append("g");
 
+d3.selectAll("#chordGroup").on("mouseleave", mouseleaveChord);
+
 group.append("path")
     .attr("id", "chordPath")
+    .attr("region", function(d,i) { return regions[i]; })
     .style("fill", function(d) { return colorChord(d.index); })
     .style("stroke", function(d) { return d3.rgb(colorChord(d.index)).darker(); })
     .attr("d", arcChord)
@@ -76,12 +80,28 @@ gChord.append("g")
   .selectAll("#chordPath")
   .data(function(chords) { return chords; })
   .enter().append("path")
+    .attr("id", "chordRibbon")
     .attr("d", ribbon)
+    .attr("source", function(d) {return regions[d.source.index];})
+    .attr("target", function(d) {return regions[d.target.index];})
     .style("fill", function(d) { return colorChord(d.target.index); })
     .style("stroke", function(d) { return d3.rgb(colorChord(d.target.index)).darker(); });
 
 function mouseoverChord(d, i) {
   chordLabel.text(regions[i]);
+  d3.selectAll("#chordPath")
+    .filter(function(path) { return this.attributes.region.value != regions[i];})
+      .style("opacity", 0.3);
+  d3.selectAll("#chordRibbon")
+    .filter(function(path) { return (path.source.index != i && path.target.index != i);})
+    .style("opacity", 0.3);
+}
+
+function mouseleaveChord(d, i){
+  d3.selectAll("#chordPath")
+    .style("opacity", 1.0);
+  d3.selectAll("#chordRibbon")
+    .style("opacity", 1.0);
 }
 
 // Returns an array of tick angles and values for a given group and step.
