@@ -73,7 +73,7 @@ groupTick
 
 gChord.append("g")
     .attr("class", "ribbons")
-  .selectAll("path")
+  .selectAll("#chordPath")
   .data(function(chords) { return chords; })
   .enter().append("path")
     .attr("d", ribbon)

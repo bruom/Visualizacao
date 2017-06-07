@@ -76,9 +76,10 @@ function createVisualization(json) {
           return (d.x1 - d.x0 > 0.005); // 0.005 radians = 0.29 degrees
       });
 
-  var path = vis.data([json]).selectAll("path")
+  var path = vis.data([json]).selectAll("#pathSunburst")
       .data(nodes)
       .enter().append("svg:path")
+      .attr("id", "pathSunburst")
       .attr("display", function(d) { return d.depth ? null : "none"; })
       .attr("d", arc)
       .attr("fill-rule", "evenodd")
@@ -113,11 +114,11 @@ function mouseoverSunburst(d) {
   updateBreadcrumbs(sequenceArray, percentageString);
 
   // Fade all the segments.
-  d3.selectAll("path")
+  d3.selectAll("#pathSunburst")
       .style("opacity", 0.3);
 
   // Then highlight only those that are an ancestor of the current segment.
-  vis.selectAll("path")
+  vis.selectAll("#pathSunburst")
       .filter(function(node) {
                 return (sequenceArray.indexOf(node) >= 0);
               })
@@ -135,10 +136,10 @@ function mouseleaveSunburst(d) {
       .style("visibility", "hidden");
 
   // Deactivate all segments during transition.
-  d3.selectAll("path").on("mouseover", null);
+  d3.selectAll("#pathSunburst").on("mouseover", null);
 
   // Transition each segment to full opacity and then reactivate it.
-  d3.selectAll("path")
+  d3.selectAll("#pathSunburst")
       .transition()
       .duration(1000)
       .style("opacity", 1)
